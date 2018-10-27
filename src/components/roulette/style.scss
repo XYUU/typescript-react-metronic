@@ -1,0 +1,24 @@
+.turntable {
+  position: relative;
+  .turntable-point {
+    position: absolute;
+    transform-origin: '50% 50% 0px';
+  }
+  .turntable-info {
+    position: absolute;
+    text-align: center;
+    .turntable-text {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #000;
+    }
+  }
+  .turntable-button-start {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+}

@@ -1,0 +1,36 @@
+bootstrap框架引入
+```jsx
+import "../../scss/framework/vendors/bootstrap/bootstrap.scss";
+```
+等分圆
+```TS
+        const { bg } = this,
+            { awards } = this.props,
+            ctx = bg.current.getContext("2d"),
+            angle = 360 / awards.length;
+        var x = 254, y = 254, r = 254, temp = 0;
+        var colors = ["#FF0000", "#0000FF", "#FFFF00", "#00FF00", "#00FFFF", "#FF00FF"];
+        ctx.lineWidth = 5;
+        for (var i = 0; i < awards.length; i++) {
+            ctx.beginPath();
+            ctx.lineTo(x, y);
+            var startAngle = temp * Math.PI / 180;
+            var endAngle = (angle + temp) * Math.PI / 180;
+            ctx.arc(x, y, r, startAngle, endAngle, false);
+            ctx.fillStyle = colors[i];
+            ctx.fill();
+            temp += angle;
+        }
+```
+图表暂定
+Recharts
+"redux-saga-ie8"
+"redux": "^3.6.0"
+"immutable": "^3.8.1"
+React Virtualized
+
+polyfill
+```ts
+
+
+```
