@@ -38,10 +38,9 @@ module.exports = (env, options) => {
     resolve: {
       extensions: ['.js', '.ts', '.tsx'],
       alias: {
-        'react': 'anujs/dist/ReactIE',
-        'react-dom': 'anujs/dist/ReactIE',
-        '@reach/router': 'anujs/dist/Router',
-        'redux-saga': 'redux-saga-ie8'
+        // 'react': 'anujs/dist/ReactIE',
+        // 'react-dom': 'anujs/dist/ReactIE',
+        // '@reach/router': 'anujs/dist/Router',
         //如果你在移动端用到了onTouchTap事件
         // 'react-tap-event-plugin': 'anujs/lib/injectTapEventPlugin',
       }

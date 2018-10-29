@@ -1,5 +1,8 @@
-import { createAction } from 'redux-actions';
 import * as Actions from '../constants/actions';
+
+function createAction<Payload>(actionType: string) {
+    return (payload?: Payload) => ({ type: actionType, payload: payload });
+}
 
 export const asideLeftToggle = createAction(Actions.ASIDE_LEFT_TOGGLE);
 export const asideLeftMobileToggle = createAction(Actions.ASIDE_LEFT_MOBILE_TOGGLE);

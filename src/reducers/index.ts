@@ -1,7 +1,16 @@
 import { combineReducers } from 'redux';
-import { handleActions } from 'redux-actions';
 import { RootState } from '../models/RootState';
 import * as Actions from '../constants/actions';
+
+function handleActions<StateAndPayload>(reducerMap: any, initialState: StateAndPayload) {
+  return (state = initialState, action) => {
+    const reducer = reducerMap[action.type];
+    if (reducer) {
+      return reducer(state, action);
+    }
+    return state;
+  }
+}
 
 const switchActions = (action: string, initialState: boolean) => handleActions<boolean>({
   [action]: (state, action) => {

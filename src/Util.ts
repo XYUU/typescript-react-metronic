@@ -105,15 +105,4 @@ export function removeEventListener(ele, event: string, fn) {
     }
 }
 
-// export function createAction<Payload>(actionType: string) {
-//     return (payload?: Payload) => ({ type: actionType, payload: payload });
-// }
-
-// export function handleActions<StateAndPayload>(reducerMap: any, initialState: StateAndPayload, options?: any) {
-//     return (state, action) => {
-//         const fun = reducerMap[action.type];
-//         return fun && fun(state, action) || initialState;
-//     }
-// }
-
 //防抖(debounce) 和 节流(throttle) 库 lodash
