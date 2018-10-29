@@ -29,8 +29,12 @@ Recharts
 "immutable": "^3.8.1"
 React Virtualized
 
+去掉
+"@types/redux-actions": "^2.3.1",
+"redux-actions": "^2.6.3",
+因为其不兼容IE8，但使用的api兼容其API接口，为今后切换过去做准备。
+
 polyfill
 ```ts
-
 
 ```

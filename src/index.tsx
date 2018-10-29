@@ -14,9 +14,9 @@ const store = configureStore();
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <App path="app" />
-            <Login path="login"/>
-            <Lottery default/>
+            <App default />
+            <Login path="login" />
+            <Lottery path="lottery" />
         </Router>
     </Provider>
     , root);

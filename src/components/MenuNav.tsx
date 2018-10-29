@@ -106,7 +106,7 @@ export class MenuItem extends React.PureComponent<Props, States> {
                     <i className="m-menu__section-icon flaticon-more-v3"></i>
                 </li>
                 :
-                <li onMouseOver={hoverToggle(true)} onMouseOut={hoverToggle(false)} ref={this.menu} className={classNames("m-menu__item",
+                <li onMouseEnter={hoverToggle(true)} onMouseLeave={hoverToggle(false)} ref={this.menu} className={classNames("m-menu__item",
                     { "m-menu__item--rel": isRelative, "m-menu__item--submenu": !fixed && item.children, "m-menu__item--hover": !fixed && isHover, "m-menu__item--open": isOpen })}                >
                     {fixed ?
                         <h3 className="m-menu__heading" onClick={openToggle(!isOpen)}>

@@ -26,5 +26,15 @@ if (!Object.is) {
         }
     }
 }
+// redux 可能缺少Object.getOwnPropertySymbols
+if (typeof Object.getPrototypeOf !== "function") {
+    Object.getPrototypeOf = function (object) {
+        return object.__proto__ || object.constructor.prototype;
+    }
+}
+if (!Object.getOwnPropertyNames) {
+    Object.getOwnPropertyNames = function (object) {
+        return Object.keys(object);
+    }
+}
 
-// redux-actions
