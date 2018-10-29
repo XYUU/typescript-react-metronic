@@ -1,6 +1,7 @@
 import * as Actions from '../constants/actions';
+import { ActionCreator, Action } from 'redux';
 
-function createAction<Payload>(actionType: string) {
+function createAction<Payload>(actionType: string): ActionCreator<Action> {
     return (payload?: Payload) => ({ type: actionType, payload: payload });
 }
 

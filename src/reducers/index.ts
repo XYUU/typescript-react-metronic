@@ -1,14 +1,11 @@
-import { combineReducers } from 'redux';
+import { combineReducers, Action } from 'redux';
 import { RootState } from '../models/RootState';
 import * as Actions from '../constants/actions';
 
 function handleActions<StateAndPayload>(reducerMap: any, initialState: StateAndPayload) {
-  return (state = initialState, action) => {
+  return (state = initialState, action: Action): StateAndPayload => {
     const reducer = reducerMap[action.type];
-    if (reducer) {
-      return reducer(state, action);
-    }
-    return state;
+    return reducer ? reducer(state, action) : state;
   }
 }
 
