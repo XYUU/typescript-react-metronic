@@ -1,6 +1,6 @@
 bootstrap框架引入
 ```jsx
-import "../../scss/framework/vendors/bootstrap/bootstrap.scss";
+import "../../../framework/vendors/bootstrap/bootstrap.scss";
 ```
 等分圆
 ```TS

@@ -10,14 +10,13 @@ const outPath = Path.join(__dirname, './dist');
 const sourcePath = Path.join(__dirname, './src');
 
 module.exports = (env, options) => {
-
-  return {
+  const config = {
     context: sourcePath,
     entry: {
       // vendor: ['classnames', 'react', 'react-dom', '@reach/router', 'react-modal', 'rc-cascader'],
+      // bootstrap: './framework/vendors/bootstrap/bootstrap.scss',
       main: './index.tsx',
-      polyfills: './polyfills.ts',
-      bootstrap: './scss/framework/vendors/bootstrap/bootstrap.scss'
+      polyfills: './polyfills.ts'
     },
     output: {
       path: outPath,
@@ -36,14 +35,7 @@ module.exports = (env, options) => {
     //   }
     // },
     resolve: {
-      extensions: ['.js', '.ts', '.tsx'],
-      alias: {
-        // 'react': 'anujs/dist/ReactIE',
-        // 'react-dom': 'anujs/dist/ReactIE',
-        // '@reach/router': 'anujs/dist/Router',
-        //如果你在移动端用到了onTouchTap事件
-        // 'react-tap-event-plugin': 'anujs/lib/injectTapEventPlugin',
-      }
+      extensions: ['.js', '.ts', '.tsx']
     },
     devtool: 'source-map',//不使用eval方便调试
     module: {
@@ -135,4 +127,14 @@ module.exports = (env, options) => {
       fs: 'empty'
     }
   };
+  if (options.mode == 'production') {
+    config.resolve.alias = {
+      //如果你在移动端用到了onTouchTap事件
+      // 'react-tap-event-plugin': 'anujs/lib/injectTapEventPlugin',
+      'react': 'anujs/dist/ReactIE',
+      'react-dom': 'anujs/dist/ReactIE',
+      '@reach/router': 'anujs/dist/Router'
+    }
+  }
+  return config;
 }
