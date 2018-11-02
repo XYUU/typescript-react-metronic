@@ -1,6 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import { outerWidth, offset, getViewPort, css } from '../../../../Util';
+import outerWidth from '../../../../utils/outerWidth';
+import offset from '../../../../utils/offset';
+import getViewPort from '../../../../utils/getViewPort';
+import css from '../../../../utils/css';
 
 export interface MenuItemData {
     label: string

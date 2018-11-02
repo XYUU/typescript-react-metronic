@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from './store';
 import { Router } from '@reach/router';
-import App from './demo/default/App';
+import App from './admin/default/App';
 import { Login } from './snippets/pages/Login';
 import { Lottery } from './snippets/pages/Lottery';
 
