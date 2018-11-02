@@ -20,7 +20,7 @@ export class HeaderMenu extends React.Component<HeaderMenuProps, HeaderMenuState
         const { asideHeaderMenuOn } = this.props,
             menus: MenuItemData[] = [
                 {
-                    label: "Actions", icon: "flaticon-add", children: [
+                    label: "Actions", icon: "flaticon-add", arrow: "down", around: "left", children: [
                         { label: "Create New Post", icon: "flaticon-file", to: "header/actions.html" },
                         {
                             label: "Generate Reports", icon: "flaticon-diagram", to: "header/actions.html", badge: {
@@ -52,7 +52,7 @@ export class HeaderMenu extends React.Component<HeaderMenuProps, HeaderMenuState
                 }
                 ,
                 {
-                    label: "Reports", icon: "flaticon-line-graph", mode: "fixed", width: 1000, children: [
+                    label: "Reports", icon: "flaticon-line-graph", arrow: "down", around: "left", mode: "fixed", width: 1000, children: [
                         {
                             label: "Finance Reports",
                             children: [
@@ -100,7 +100,7 @@ export class HeaderMenu extends React.Component<HeaderMenuProps, HeaderMenuState
                 }
                 ,
                 {
-                    label: "Apps", icon: "flaticon-paper-plane", children: [
+                    label: "Apps", icon: "flaticon-paper-plane", arrow: "down", around: "left", children: [
                         { label: "eCommerce", icon: "flaticon-business", to: "header/actions.html" },
                         {
                             label: "Audience", icon: "flaticon-computer",

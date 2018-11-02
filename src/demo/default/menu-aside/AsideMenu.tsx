@@ -344,7 +344,7 @@ export class AsideMenu extends React.Component<AsideMenuProps, AsideMenuStates> 
     ];
     return (
       <div className="m-aside-menu m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark" style={{ position: 'relative' }}>
-        <Menu menus={menus} className="m-menu__nav m-menu__nav--dropdown-submenu-arrow " />
+        <Menu menus={menus} className="m-menu__nav m-menu__nav--dropdown-submenu-arrow" />
       </div>
     );
   }

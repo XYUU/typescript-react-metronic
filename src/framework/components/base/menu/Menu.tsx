@@ -13,6 +13,8 @@ export interface MenuItemData {
     }
     children?: MenuItemData[]
     mode?: mode
+    arrow?: arrow
+    around?: around
     width?: number
     type?: 'section' | 'item'
 }
@@ -20,8 +22,6 @@ export interface MenuItemData {
 export interface MenuItemProps {
     item: MenuItemData
     isRelative?: boolean
-    arrow?: arrow
-    around?: around
     pull?: boolean
     isRTL?: boolean
     mode?: mode
@@ -53,7 +53,8 @@ export class MenuItem extends React.PureComponent<MenuItemProps, MenuItemStates>
     }
 
     componentDidMount() {
-        const { arrow, isRTL, item, around, pull } = this.props,
+        const { isRTL, item, pull } = this.props,
+            { arrow, around } = item,
             mode = item.mode,
             menu = this.menu.current,
             submenu = this.submenu.current;
@@ -95,9 +96,10 @@ export class MenuItem extends React.PureComponent<MenuItemProps, MenuItemStates>
     }
 
     render() {
-        const { item, isRelative, arrow, around, mode } = this.props,
+        const { item, isRelative, mode } = this.props,
             { isHover, isOpen, arrowStyle } = this.state,
             { hoverToggle, openToggle } = this,
+            { arrow, around } = item,
             fixed = mode == 'fixed' && item.mode != 'fixed';
         return (
             item.type === 'section' ?
@@ -214,7 +216,7 @@ export class Menu extends React.Component<MenuProps, MenuStates> {
         return (
             <ul className={className}>
                 {menus.map((item, index) =>
-                    <MenuItem item={item} key={index} isRelative={true} mode={item.mode} arrow="down" around="left" />
+                    <MenuItem item={item} key={index} isRelative={true} mode={item.mode} />
                 )}
             </ul>
         );
