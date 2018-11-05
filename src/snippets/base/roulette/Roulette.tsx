@@ -55,10 +55,15 @@ export class Roulette extends React.Component<RouletteProps, RouletteStates> {
     componentDidMount() {
         const { canvas, drawCircle, drawSector } = this, { awards } = this.props,
             centerX = 254, centerY = 254, radius = 245,
-            ctx = canvas.current.getContext("2d");
-        drawCircle(ctx, centerX, centerY, radius, awards.length);
-        drawSector(ctx, centerX, centerY, radius, 0, 360 / awards.length);
-    }
+            drawTimer = setInterval(() => {
+                if (canvas.current.getContext) {
+                    clearInterval(drawTimer);
+                    const ctx = canvas.current.getContext("2d");
+                    drawCircle(ctx, centerX, centerY, radius, awards.length);
+                    drawSector(ctx, centerX, centerY, radius, 0, 360 / awards.length);
+                }
+            }, 100);
+    }       
 
     drawCircle(ctx: CanvasRenderingContext2D, centerY: number, centerX: number, radius: number, length: number) {
         ctx.lineWidth = 4;

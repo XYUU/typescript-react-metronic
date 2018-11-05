@@ -29,6 +29,10 @@ Recharts
 "immutable": "^3.8.1"
 React Virtualized
 
+侧滑
+swipe-js-iso
+不建议使用react-swipe
+
 去掉
 "@types/redux-actions": "^2.3.1",
 "redux-actions": "^2.6.3",

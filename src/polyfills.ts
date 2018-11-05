@@ -2,7 +2,8 @@ import 'es5-shim'; //IE8 ^4.5.10
 import 'object-create-ie8';//IE8, 我写的库，这样就不用加上es5-sham
 import 'object-defineproperty-ie8';//IE8， 我写的库
 import 'es6-promise/auto';
-//import 'fetch-ie8';
+import 'fetch-ie8';
+import 'excanvas.js';// IE8 对canvas的支持
 
 if (!Object.assign) {
     Object.assign = function (target) {
