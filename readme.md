@@ -25,7 +25,7 @@ import "../../../framework/vendors/bootstrap/bootstrap.scss";
 图表暂定
 Recharts
 "redux-saga-ie8"
-"redux": "^3.6.0"
+"redux": "^3.7.2",
 "immutable": "^3.8.1"
 React Virtualized
 
