@@ -1,23 +1,30 @@
 import React from 'react';
 import { SubHeader } from './subheader/SubHeader';
 import { RouteComponentProps } from '@reach/router';
-import { Popover } from '../../framework/vendors/bootstrap/extend/Popover';
+import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import { Portlets } from '../../framework/components/general/portlets/Portlets';
-import { Section } from '../../framework/components/general/typography/Section';
+import { Section, SectionSub, SectionHeader, SectionContent } from '../../framework/components/general/typography/Section';
 import { Separator } from '../../framework/components/general/typography/Separator';
 
 export interface PopoverPageProps extends RouteComponentProps {
 
 }
 export interface PopoverPageStates {
-
+    btn1?: boolean
 }
 export class PopoverPage extends React.Component<PopoverPageProps, PopoverPageStates> {
     constructor(props?: PopoverPageProps, context?: any) {
         super(props, context);
-
+        this.state = {};
     }
+
+    toggle = () => {
+        const { btn1 } = this.state;
+        this.setState({ btn1: !btn1 });
+    }
+
     render() {
+        const { toggle } = this, { btn1 } = this.state;
         return (
             <React.Fragment>
                 <SubHeader title="Popover" items={[{ to: "", text: "Base" }, { to: "", text: "Popover" }]}>
@@ -77,62 +84,102 @@ export class PopoverPage extends React.Component<PopoverPageProps, PopoverPageSt
                     <div className="row">
                         <div className="col-lg-6">
                             <Portlets title="Basic Examples">
-                                <Section title="Basic Usage" subTitle="Click below button to toggle popover:">
-                                    <Popover title="Popover title" content="And here's some amazing content. It's very engaging. Right?">
-                                        <button type="button" className="btn btn-danger">Click me</button>
-                                    </Popover>
+                                <Section>
+                                    <SectionHeader>Basic Usage</SectionHeader>
+                                    <SectionSub>Click below button to toggle popover:</SectionSub>
+                                    <SectionContent>
+                                        <button id="btn1" type="button" className="btn btn-danger">Click me</button>
+                                        <Popover className="m-popover" target="btn1">
+                                            <PopoverHeader>Popover title</PopoverHeader>
+                                            <PopoverBody>And here's some amazing content. It's very engaging. Right?</PopoverBody>
+                                        </Popover>
+                                    </SectionContent>
                                 </Section>
-                                <Separator />
-                                <Section className="m-demo-buttons" title="Directions" subTitle="Four direction options are available: top, right, bottom, and left aligned:">
-                                    <Popover container="body" placement="top" content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                        <button type="button" className="btn btn-brand">Popover on top</button>
-                                    </Popover>
-                                    <Popover container="body" placement="right" content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                        <button type="button" className="btn btn-primary">Popover on right</button>
-                                    </Popover>
-                                    <Popover container="body" placement="bottom" content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                        <button type="button" className="btn btn-warning">Popover on bottom</button>
-                                    </Popover>
-                                    <Popover container="body" placement="left" content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                        <button type="button" className="btn btn-success">Popover on left</button>
-                                    </Popover>
+                                <Separator/>
+                                <Section>
+                                    <SectionHeader>Directions</SectionHeader>
+                                    <SectionSub>Four direction options are available: top, right, bottom, and left aligned:</SectionSub>
+                                    <SectionContent className="m-demo-buttons">
+                                        <button id="btn2" type="button" className="btn btn-brand">Popover on top</button>
+                                        <Popover className="m-popover" placement="top" target="btn2">
+                                            <PopoverBody>Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</PopoverBody>
+                                        </Popover>
+                                        <button id="btn3" type="button" className="btn btn-primary">Popover on right</button>
+                                        <Popover className="m-popover" placement="right" target="btn3">
+                                            <PopoverBody>Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</PopoverBody>
+                                        </Popover>
+                                        <button id="btn4" type="button" className="btn btn-warning">Popover on bottom</button>
+                                        <Popover className="m-popover" placement="bottom" target="btn4">
+                                            <PopoverBody>Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</PopoverBody>
+                                        </Popover>
+                                        <button id="btn5" type="button" className="btn btn-success">Popover on left</button>
+                                        <Popover className="m-popover" placement="left" target="btn5">
+                                            <PopoverBody>Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</PopoverBody>
+                                        </Popover>
+                                    </SectionContent>
                                 </Section>
-                                <Separator />
-                                <Section title="Dismiss on next click" subTitle="Use the focus trigger to dismiss popovers on the next click that the user makes.">
-                                    <Popover trigger="focus" title="Dismissible popover" content="And here's some amazing content. It's very engaging. Right?">
-                                        <a className="btn btn-success">Dismissible popover</a>
-                                    </Popover>
+                                <Separator/>
+                                <Section>
+                                    <SectionHeader>Dismiss on next click</SectionHeader>
+                                    <SectionSub>Use the focus trigger to dismiss popovers on the next click that the user makes.</SectionSub>
+                                    <SectionContent>
+                                        <a id="btn6" className="btn btn-success">Dismissible popover</a>
+                                        <Popover className="m-popover" target="btn6">
+                                            <PopoverHeader>Dismissible popover</PopoverHeader>
+                                            <PopoverBody>And here's some amazing content. It's very engaging. Right?</PopoverBody>
+                                        </Popover>
+                                    </SectionContent>
                                 </Section>
                             </Portlets>
                         </div>
                         <div className="col-lg-6">
                             <Portlets title="Advanced Examples">
-                                <Section title="HTML Content" subTitle="Insert HTML into the popover:">
-                                    <Popover trigger="focus" title="Popover title" content={"And here's some amazing" + <b>HTML</b> + "content. It's very " + <code>engaging</code> + ". Right?"}>
-                                        <button type="button" className="btn btn-primary">Click me</button>
-                                    </Popover>
+                                <Section>
+                                    <SectionHeader>HTML Content</SectionHeader>
+                                    <SectionSub>Insert HTML into the popover:</SectionSub>
+                                    <SectionContent>
+                                        <button id="btn7" type="button" className="btn btn-primary">Click me</button>
+                                        <Popover className="m-popover" target="btn7">
+                                            <PopoverHeader>Popover title</PopoverHeader>
+                                            <PopoverBody>And here's some amazing<b>HTML</b>content. It's very <code>engaging</code>. Right?</PopoverBody>
+                                        </Popover>
+                                    </SectionContent>
                                 </Section>
-                                <Separator />
-                                <Section className="m-demo-buttons" title="Offset" subTitle={"Offset of the popover relative to its target. For more information refer to" +
-                                    <a className="m-link" href="http://tether.io/#offset" target="_blank">Tether's offset docs.</a>}>
-                                    <Popover container="body" trigger="focus" data-offset="20px 20px" placement="top" content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                        <button type="button" className="btn btn-brand">Example 1</button>
-                                    </Popover>
-                                    <Popover container="body" trigger="focus" data-offset="-20px -20px" placement="top" content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                        <button type="button" className="btn btn-success">Example 2</button>
-                                    </Popover>
-                                    <Popover container="body" trigger="focus" data-offset="60px 0px" placement="top" content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                        <button type="button" className="btn btn-danger">Example 3</button>
-                                    </Popover>
+                                <Separator/>
+                                <Section>
+                                    <SectionHeader>Offset</SectionHeader>
+                                    <SectionSub>Offset of the popover relative to its target. For more information refer to<a className="m-link" href="http://tether.io/#offset" target="_blank">Tether's offset docs.</a></SectionSub>
+                                    <SectionContent className="m-demo-buttons">
+                                        <button id="btn8" type="button" className="btn btn-brand">Example 1</button>
+                                        <Popover className="m-popover" data-offset="20px 20px" placement="top" target="btn8">
+                                            <PopoverBody>Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</PopoverBody>
+                                        </Popover>
+                                        <button id="btn9" type="button" className="btn btn-success">Example 2</button>
+                                        <Popover className="m-popover" data-offset="-20px -20px" placement="top" target="btn9">
+                                            <PopoverBody>Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</PopoverBody>
+                                        </Popover>
+                                        <button id="btn10" type="button" className="btn btn-danger">Example 3</button>
+                                        <Popover className="m-popover" data-offset="60px 0px" placement="top" target="btn10">
+                                            <PopoverBody>Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</PopoverBody>
+                                        </Popover>
+                                    </SectionContent>
                                 </Section>
-                                <Separator />
-                                <Section className="m-demo-buttons" title="Skin" subTitle={"Use " + <code>data-skin="light"</code> + " or " + <code>data-skin="dark"</code> + "parameters to set popover skin. Default skin is light."}>
-                                    <Popover container="body" trigger="focus" data-offset="20px 20px" placement="top" title="Default light skin" content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                        <button type="button" className="btn btn-brand">Light skin</button>
-                                    </Popover>
-                                    <Popover container="body" trigger="click" data-skin="dark" placement="bottom" title="Dark skin" content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                                        <button type="button" className="btn btn-success">Dark skin</button>
-                                    </Popover>
+                                <Separator/>
+                                <Section>
+                                    <SectionHeader>Skin</SectionHeader>
+                                    <SectionSub>Use <code>data-skin="light"</code> or <code>data-skin="dark"</code>parameters to set popover skin. Default skin is light.</SectionSub>
+                                    <SectionContent className="m-demo-buttons">
+                                        <button id="btn11" type="button" className="btn btn-brand">Light skin</button>
+                                        <Popover className="m-popover" data-offset="20px 20px" placement="top" target="btn11">
+                                            <PopoverHeader>Default light skin</PopoverHeader>
+                                            <PopoverBody>Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</PopoverBody>
+                                        </Popover>
+                                        <button id="btn12" type="button" className="btn btn-success" onClick={toggle}>Dark skin</button>
+                                        <Popover className="m-popover m-popover--skin-dark" data-skin="dark" placement="bottom" target="btn12" isOpen={btn1} toggle={toggle}>
+                                            <PopoverHeader>Dark skin</PopoverHeader>
+                                            <PopoverBody>Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</PopoverBody>
+                                        </Popover>
+                                    </SectionContent>
                                 </Section>
                             </Portlets>
                         </div>

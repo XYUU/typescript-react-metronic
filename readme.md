@@ -29,6 +29,9 @@ Recharts
 "immutable": "^3.8.1"
 React Virtualized
 
+reactstrap
+https://reactstrap.github.io/components/popovers/
+
 侧滑
 swipe-js-iso
 不建议使用react-swipe
