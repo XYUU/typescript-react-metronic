@@ -36,8 +36,8 @@
 @import "buttons/buttons";
 
 //== Spinners
-// @import "spinners/spinner";
-// @import "spinners/loader";
+@import "spinners/spinner";
+@import "spinners/loader";
 
 //== Lists
 @import "lists/search";
@@ -48,13 +48,13 @@
 
 //== Cards
 @import "cards/user";
-// @import "cards/profile";
+@import "cards/profile";
 
 //== Messenger
 @import "messenger/messenger";
 
 //== Portlets
-// @import "portlets/portlets";
+@import "portlets/portlets";
 
 //== Timeline
 // @import "timeline/timeline-1";
@@ -95,14 +95,14 @@
 // @import "widgets/widget30"; 
 
 //== Demo
-// @import "demo/icon";
-// @import "demo/demo";
+@import "demo/icon";
+@import "demo/demo";
 //== Forms
 @import "forms/checkbox-radio";
-// @import "forms/input";
+@import "forms/input";
 @import "forms/switch";
 @import "forms/layout";
-// @import "forms/option";
+@import "forms/option";
 
 //== Table
 // @import "table/table";
@@ -116,4 +116,4 @@
 // @import "wizard/wizard-5";
 
 //== Accordion
-// @import "accordion/accordion";
+@import "accordion/accordion";

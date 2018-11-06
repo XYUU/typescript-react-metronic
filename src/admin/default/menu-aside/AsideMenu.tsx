@@ -32,7 +32,7 @@ export class AsideMenu extends React.Component<AsideMenuProps, AsideMenuStates> 
           { label: "Progress", bullet: "m-menu__link-bullet--dot", to: "components/base/progress.html" },
           { label: "Modal", bullet: "m-menu__link-bullet--dot", to: "components/base/modal.html" },
           { label: "Alerts", bullet: "m-menu__link-bullet--dot", to: "components/base/alerts.html" },
-          { label: "Popover", bullet: "m-menu__link-bullet--dot", to: "components/base/popover.html" },
+          { label: "Popover", bullet: "m-menu__link-bullet--dot", to: "popover" },
           { label: "Tooltip", bullet: "m-menu__link-bullet--dot", to: "components/base/tooltip.html" },
           { label: "Block UI", bullet: "m-menu__link-bullet--dot", to: "components/base/blockui.html" },
           { label: "Spinners", bullet: "m-menu__link-bullet--dot", to: "components/base/spinners.html" },

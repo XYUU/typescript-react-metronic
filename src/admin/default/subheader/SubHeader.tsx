@@ -35,8 +35,8 @@ export class SubHeader extends React.Component<SubHeaderProps, SubHeaderStates> 
                                         </a>
                                     </li>
                                     {
-                                        items.map(item =>
-                                            <React.Fragment>
+                                        items.map((item, index) =>
+                                            <React.Fragment key={index}>
                                                 <li className="m-nav__separator">-</li>
                                                 <li className="m-nav__item">
                                                     <a href={item.to} className="m-nav__link">
