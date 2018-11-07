@@ -53,10 +53,10 @@ export class QuickSidebar extends React.Component<QuickSidebarProps, QuickSideba
                         <NavItem className="m-tabs__item">
                             <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Messages' })} onClick={tabsToggle('Messages')}>Messages</NavLink>
                         </NavItem>
-                        <NavItem>
+                        <NavItem className="m-tabs__item">
                             <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Settings' })} onClick={tabsToggle('Settings')}>Settings</NavLink>
                         </NavItem>
-                        <NavItem>
+                        <NavItem className="m-tabs__item">
                             <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Logs' })} onClick={tabsToggle('Logs')}>Logs</NavLink>
                         </NavItem>
                     </Nav>

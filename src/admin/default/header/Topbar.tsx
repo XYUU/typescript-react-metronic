@@ -161,10 +161,10 @@ export class Topbar extends React.Component<TopbarProps, TopbarStates> {
                                                 <NavItem className="m-tabs__item">
                                                     <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Alerts' })} onClick={tabsToggle('Alerts')}>Alerts</NavLink>
                                                 </NavItem>
-                                                <NavItem>
+                                                <NavItem className="m-tabs__item">
                                                     <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Events' })} onClick={tabsToggle('Events')}>Events</NavLink>
                                                 </NavItem>
-                                                <NavItem>
+                                                <NavItem className="m-tabs__item">
                                                     <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Logs' })} onClick={tabsToggle('Logs')}>Logs</NavLink>
                                                 </NavItem>
                                             </Nav>
