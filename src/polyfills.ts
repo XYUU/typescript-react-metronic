@@ -27,7 +27,7 @@ if (!Object.is) {
         }
     }
 }
-// redux 可能缺少Object.getOwnPropertySymbols
+// react-redux 可能缺少Object.getOwnPropertySymbols
 if (typeof Object.getPrototypeOf !== "function") {
     Object.getPrototypeOf = function (object) {
         return object.__proto__ || object.constructor.prototype;
@@ -38,4 +38,9 @@ if (!Object.getOwnPropertyNames) {
         return Object.keys(object);
     }
 }
-
+// reactstrap 缺少freeze
+if (!Object.freeze) {
+    Object.freeze = function (object) {
+        return object;
+    }
+}

@@ -4,19 +4,34 @@ import * as  Actions from '../../../actions';
 import { RootState } from '../../../models/RootState';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Tabs, TabPane } from '../../../framework/components/general/tabs/Tabs';
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 // import './style.scss';
 
 export interface QuickSidebarProps {
     quickSidebarOn: boolean
     quickSidebarToggle: typeof Actions.quickSidebarToggle
 }
+export interface QuickSidebarStates {
+    activeTab: string
+}
 
-export class QuickSidebar extends React.Component<QuickSidebarProps> {
+export class QuickSidebar extends React.Component<QuickSidebarProps, QuickSidebarStates> {
 
     constructor(props?: QuickSidebarProps, context?: any) {
         super(props, context);
         this.quickSidebarToggle = this.quickSidebarToggle.bind(this);
+        this.tabsToggle = this.tabsToggle.bind(this);
+        this.state = { activeTab: 'Messages' };
+    }
+
+    tabsToggle(tab: string) {
+        return () => {
+            if (this.state.activeTab !== tab) {
+                this.setState({
+                    activeTab: tab
+                });
+            }
+        };
     }
 
     quickSidebarToggle() {
@@ -25,15 +40,28 @@ export class QuickSidebar extends React.Component<QuickSidebarProps> {
 
     render() {
         const { quickSidebarOn } = this.props,
-            overlay = quickSidebarOn ? <div key="quick-sidebar-overlay" className="m-quick-sidebar-overlay" onClick={this.quickSidebarToggle}></div> : null;
+            { state, quickSidebarToggle, tabsToggle } = this,
+            { activeTab } = state,
+            overlay = quickSidebarOn ? <div key="quick-sidebar-overlay" className="m-quick-sidebar-overlay" onClick={quickSidebarToggle}></div> : null;
         return [
             <div key="m_quick_sidebar" className={classNames("m-quick-sidebar m-quick-sidebar--tabbed m-quick-sidebar--skin-light", { "m-quick-sidebar--on": quickSidebarOn })}>
                 <div className="m-quick-sidebar__content">
-                    <span className="m-quick-sidebar__close" onClick={this.quickSidebarToggle}>
+                    <span className="m-quick-sidebar__close" onClick={quickSidebarToggle}>
                         <i className="la la-close" />
                     </span>
-                    <Tabs>
-                        <TabPane tab='Messages'>
+                    <Nav tabs className="m-tabs m-tabs-line m-tabs-line--brand">
+                        <NavItem className="m-tabs__item">
+                            <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Messages' })} onClick={tabsToggle('Messages')}>Messages</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Settings' })} onClick={tabsToggle('Settings')}>Settings</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Logs' })} onClick={tabsToggle('Logs')}>Logs</NavLink>
+                        </NavItem>
+                    </Nav>
+                    <TabContent activeTab={activeTab}>
+                        <TabPane tabId='Messages'>
                             <div className="m-messenger m-messenger--message-arrow m-messenger--skin-light">
                                 <div className="m-messenger__messages m-scrollable">
                                     <div className="m-messenger__wrapper">
@@ -202,7 +230,7 @@ export class QuickSidebar extends React.Component<QuickSidebarProps> {
                                 </div>
                             </div>
                         </TabPane>
-                        <TabPane tab='Settings'>
+                        <TabPane tabId='Settings'>
                             <div className="m-list-settings m-scrollable">
                                 <div className="m-list-settings__group">
                                     <div className="m-list-settings__heading">General Settings</div>
@@ -322,7 +350,7 @@ export class QuickSidebar extends React.Component<QuickSidebarProps> {
                                 </div>
                             </div>
                         </TabPane>
-                        <TabPane tab='Logs'>
+                        <TabPane tabId='Logs'>
                             <div className="m-list-timeline m-scrollable">
                                 <div className="m-list-timeline__group">
                                     <div className="m-list-timeline__heading">
@@ -477,7 +505,7 @@ export class QuickSidebar extends React.Component<QuickSidebarProps> {
                                 </div>
                             </div>
                         </TabPane>
-                    </Tabs>
+                    </TabContent>
                 </div>
             </div>
             ,

@@ -1,6 +1,7 @@
 import React from 'react';
 import { SubHeader } from './subheader/SubHeader';
 import { RouteComponentProps } from '@reach/router';
+import { Content } from './base/Content';
 
 export interface DashboardProps extends RouteComponentProps {
 
@@ -29,7 +30,7 @@ export class Dashboard extends React.Component<DashboardProps, DashboardStates> 
                         </span>
                     </div>
                 </SubHeader>
-                <div className="m-content">
+                <Content>
                     {/*Begin::Section*/}
                     < div className="row" >
                         <div className="col-xl-4">
@@ -2739,7 +2740,7 @@ export class Dashboard extends React.Component<DashboardProps, DashboardStates> 
                         </div>
                     </div>
                     {/*End::Section*/}
-                </div>
+                </Content>
             </React.Fragment>
         );
     }

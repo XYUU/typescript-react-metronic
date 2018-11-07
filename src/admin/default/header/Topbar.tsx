@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import * as  Actions from '../../../actions';
-import { Tabs, TabPane } from '../../../framework/components/general/tabs/Tabs';
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import addEventListener from '../../../utils/addEventListener';
 import removeEventListener from '../../../utils/removeEventListener';
 import { RootState } from '../../../models/RootState';
@@ -21,7 +21,7 @@ export interface TopbarProps {
 }
 
 export interface TopbarStates {
-
+    activeTab: string
 }
 
 export class Topbar extends React.Component<TopbarProps, TopbarStates> {
@@ -36,11 +36,13 @@ export class Topbar extends React.Component<TopbarProps, TopbarStates> {
         this.quickActionsToggle = this.quickActionsToggle.bind(this);
         this.userProfileToggle = this.userProfileToggle.bind(this);
         this.quickSidebarToggle = this.quickSidebarToggle.bind(this);
+        this.tabsToggle = this.tabsToggle.bind(this);
 
         this.quickSearch = React.createRef<HTMLLIElement>();
         this.notifications = React.createRef<HTMLLIElement>();
         this.quickActions = React.createRef<HTMLLIElement>();
         this.userProfile = React.createRef<HTMLLIElement>();
+        this.state = { activeTab: 'Alerts' };
     }
 
     off = (e: MouseEvent) => {
@@ -60,6 +62,16 @@ export class Topbar extends React.Component<TopbarProps, TopbarStates> {
             }
         }
     };
+
+    tabsToggle(tab: string) {
+        return () => {
+            if (this.state.activeTab !== tab) {
+                this.setState({
+                    activeTab: tab
+                });
+            }
+        };
+    }
 
     componentDidMount() {
         addEventListener(document, "click", this.off);
@@ -92,7 +104,9 @@ export class Topbar extends React.Component<TopbarProps, TopbarStates> {
     render() {
         const { quickSearchOn, notificationsOn, quickActionsOn, userProfileOn } = this.props,
             { quickSearch, notifications, quickActions, userProfile,
-                quickSearchToggle, notificationsToggle, quickActionsToggle, userProfileToggle, quickSidebarToggle } = this;
+                quickSearchToggle, notificationsToggle, quickActionsToggle, userProfileToggle, quickSidebarToggle,
+                state, tabsToggle } = this,
+            { activeTab } = state;
         return (
             <div className="m-topbar m-stack m-stack--ver m-stack--general m-stack--fluid">
                 <div className="m-stack__item m-topbar__nav-wrapper">
@@ -143,8 +157,19 @@ export class Topbar extends React.Component<TopbarProps, TopbarStates> {
                                     </div>
                                     <div className="m-dropdown__body">
                                         <div className="m-dropdown__content">
-                                            <Tabs>
-                                                <TabPane tab="Alerts">
+                                            <Nav tabs className="m-tabs m-tabs-line m-tabs-line--brand">
+                                                <NavItem className="m-tabs__item">
+                                                    <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Alerts' })} onClick={tabsToggle('Alerts')}>Alerts</NavLink>
+                                                </NavItem>
+                                                <NavItem>
+                                                    <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Events' })} onClick={tabsToggle('Events')}>Events</NavLink>
+                                                </NavItem>
+                                                <NavItem>
+                                                    <NavLink className={classNames("m-tabs__link", { active: activeTab == 'Logs' })} onClick={tabsToggle('Logs')}>Logs</NavLink>
+                                                </NavItem>
+                                            </Nav>
+                                            <TabContent activeTab={activeTab}>
+                                                <TabPane tabId="Alerts">
                                                     <div className="m-scrollable">
                                                         <div className="m-list-timeline m-list-timeline--skin-light">
                                                             <div className="m-list-timeline__items">
@@ -200,7 +225,7 @@ export class Topbar extends React.Component<TopbarProps, TopbarStates> {
                                                         </div>
                                                     </div>
                                                 </TabPane>
-                                                <TabPane tab="Events">
+                                                <TabPane tabId="Events">
                                                     <div className="m-scrollable">
                                                         <div className="m-list-timeline m-list-timeline--skin-light">
                                                             <div className="m-list-timeline__items">
@@ -238,14 +263,14 @@ export class Topbar extends React.Component<TopbarProps, TopbarStates> {
                                                         </div>
                                                     </div>
                                                 </TabPane>
-                                                <TabPane tab="Logs">
+                                                <TabPane tabId="Logs">
                                                     <div className="m-stack m-stack--ver m-stack--general" style={{ minHeight: 180 }}>
                                                         <div className="m-stack__item m-stack__item--center m-stack__item--middle">
                                                             <span>All caught up!<br />No new logs.</span>
                                                         </div>
                                                     </div>
                                                 </TabPane>
-                                            </Tabs>
+                                            </TabContent>
                                         </div>
                                     </div>
                                 </div>
