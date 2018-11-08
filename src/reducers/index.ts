@@ -27,4 +27,9 @@ export default combineReducers<RootState>({
   quickActionsOn: switchActions(Actions.QUICK_ACTIONS_TOGGLE, F),
   userProfileOn: switchActions(Actions.USER_PROFILE_TOGGLE, F),
   quickSidebarOn: switchActions(Actions.QUICK_SIDEBAR_TOGGLE, F),
+  message: handleActions({
+    [Actions.TOASTR_MESSAGE]: (state, action) => {
+      return [].concat(...state, action.payload);
+    }
+  }, [])
 });

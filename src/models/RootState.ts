@@ -8,4 +8,5 @@ export interface RootState {
     quickActionsOn: boolean
     userProfileOn: boolean
     quickSidebarOn: boolean
+    message: string[]
 }

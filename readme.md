@@ -31,6 +31,15 @@ React Virtualized
 
 reactstrap
 https://reactstrap.github.io/components/popovers/
+react-bs-notifier
+react-redux-toastr
+react-toastr
+dom-helpers
+sweetalert2-react-content
+https://github.com/souhe/reactScrollbar
+https://www.npmjs.com/package/perfect-scrollbar
+React-Perfect-Scrollbar
+react-scroll
 
 侧滑
 swipe-js-iso
@@ -41,7 +50,36 @@ swipe-js-iso
 "redux-actions": "^2.6.3",
 因为其不兼容IE8，但使用的api兼容其API接口，为今后切换过去做准备。
 
+
 polyfill
 ```ts
+export const CONTENT_TYPE = "Content-Type",
+    ContentType = {
+        ALL: "*/*",
+        XML: "application/xml",
+        JSON: "application/json;charset=UTF-8",
+        FORM: "application/x-www-form-urlencoded",
+        STREAM: "application/octet-stream",
+        TEXT: "text/html"
+    },
+    Method = {
+        GET: 'GET',
+        POST: 'POST',
+        PUT: 'PUT',
+        DELETE: 'DELETE',
+        HEAD: 'HEAD'
+    };
 
+fetch("user", { credentials: "include" })
+    .then((resp) => resp.json())
+    .then((json) => {
+        const Page = json.data ? App : Login,
+            root = document.getElementById('root'),
+            store = configureStore();
+        ReactDOM.render(
+            <Provider store={store}>
+                <Page />
+            </Provider>
+            , root);
+    });
 ```

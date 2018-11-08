@@ -14,3 +14,7 @@ export const notificationsToggle = createAction<boolean>(Actions.NOTIFICATIONS_T
 export const quickActionsToggle = createAction<boolean>(Actions.QUICK_ACTIONS_TOGGLE);
 export const userProfileToggle = createAction<boolean>(Actions.USER_PROFILE_TOGGLE);
 export const quickSidebarToggle = createAction(Actions.QUICK_SIDEBAR_TOGGLE);
+export const signIn = createAction(Actions.SIGN_IN);
+export const signUp = createAction(Actions.SIGN_UP);
+export const forgetPassword = createAction(Actions.FORGET_PASSWORD);
+export const toastrMessage = createAction(Actions.TOASTR_MESSAGE);
