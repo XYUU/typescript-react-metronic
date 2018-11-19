@@ -5,7 +5,7 @@
   "description": "A frontend boilerplate with React, Redux and Typescript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack-dev-server --debug --devtool cheap-module-source-map --output-pathinfo --history-api-fallback --hot --inline --progress --colors --port 3000 --open --mode=development",
     "debug": "webpack -p --progress --colors --mode=development",
     "build": "webpack -p --progress --colors --mode=production"
@@ -14,6 +14,7 @@
   "devDependencies": {
     "@reach/router": "^1.2.0",
     "@types/classnames": "2.2.6",
+    "@types/jest": "^23.3.9",
     "@types/reach__router": "^1.0.1",
     "@types/react": "16.4.14",
     "@types/react-dom": "16.0.7",
@@ -24,11 +25,12 @@
     "autoprefixer": "^9.1.5",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^1.0.0",
-    "es3ify-webpack-plugin": "^0.0.1",
+    "es3ify-loader": "^0.2.0",
     "expose-loader": "^0.7.5",
     "file-loader": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.9.0",
     "postcss-loader": "^3.0.0",
@@ -39,6 +41,7 @@
     "redux-saga": "^0.16.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
+    "ts-jest": "^23.10.4",
     "typescript": "^3.0.3",
     "url-loader": "^1.1.1",
     "webpack": "^4.18.0",
@@ -62,5 +65,9 @@
     "reactstrap": "^6.5.0",
     "redux": "^3.7.2",
     "redux-saga-ie8": "^0.11.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
   }
 }

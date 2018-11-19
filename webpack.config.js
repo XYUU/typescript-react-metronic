@@ -81,14 +81,18 @@ module.exports = (env, options) => {
             },
           ]
         },
+        {
+          test: /\.js$/,
+          include: /\/node_modules\//,
+          loader: 'es3ify'
+        }
       ],
     },
     plugins: [
       new MiniCssExtractPlugin({
         filename: "[name].css",
         chunkFilename: "[id].css"
-      }),
-      new es3ifyPlugin()
+      })
     ],
     devServer: {
       contentBase: sourcePath,

@@ -9,6 +9,6 @@ const root = document.getElementById('root'),
     store = configureStore();
 ReactDOM.render(
     <Provider store={store}>
-        <Login />
+        <App />
     </Provider>
     , root);

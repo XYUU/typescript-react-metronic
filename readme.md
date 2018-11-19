@@ -2,6 +2,13 @@ bootstrap框架引入
 ```jsx
 import "../../../framework/vendors/bootstrap/bootstrap.scss";
 ```
+
+```scss
+@import "../../../framework/components/general/forms/config";
+@import "../../../framework/components/general/forms/checkbox-radio";
+@import "../../../framework/components/general/forms/input";
+```
+
 等分圆
 ```TS
         const { bg } = this,
@@ -40,6 +47,8 @@ https://github.com/souhe/reactScrollbar
 https://www.npmjs.com/package/perfect-scrollbar
 React-Perfect-Scrollbar
 react-scroll
+
+控制台考虑使用 xterm.js
 
 侧滑
 swipe-js-iso
