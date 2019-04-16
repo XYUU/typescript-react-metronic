@@ -5,11 +5,10 @@ function json(url, options) {
   return fetch(url, options).then(
     resp => {
       if (resp.ok) {
-        return resp.json().then(data => {
-          data.message
-        }, error => {
-          throw { message: "JSON报文解析失败" };
-        });
+        return resp.json().then(data => data.message
+          , error => {
+            throw { message: "JSON报文解析失败" };
+          });
       }
       throw { message: `服务器错误,错误代码（${resp.status}）。` };
     },
@@ -21,8 +20,8 @@ function json(url, options) {
 
 function* signin(action) {
   try {
-    const response = yield call(json, "signin", action.payload);
-    yield put({ type: "USER_FETCH_SUCCEEDED", payload: response });
+    const user = yield call(json, "signin", action.payload);
+    yield put({ type: "USER_FETCH_SUCCEEDED", payload: user });
   } catch (e) {
     yield put({ type: Actions.TOASTR_MESSAGE, payload: e.message });
   }

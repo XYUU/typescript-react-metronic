@@ -32,4 +32,5 @@ export default combineReducers<RootState>({
       return [].concat(...state, action.payload);
     }
   }, [])
+
 });

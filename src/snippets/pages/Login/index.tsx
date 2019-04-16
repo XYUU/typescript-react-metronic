@@ -19,6 +19,7 @@ type view = 'signin' | 'signup' | 'forget-password'
 
 export interface LoginStates {
     show?: view
+    email?:string
 }
 
 export class Login extends React.Component<LoginProps, LoginStates> {
@@ -53,7 +54,8 @@ export class Login extends React.Component<LoginProps, LoginStates> {
     render() {
         const { toggle, signIn, signUp, forgetPassword } = this,
             { show } = this.state,
-            { message } = this.props, error = message.pop();
+            { message } = this.props, error = message.pop(),
+            handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => this.setState({ email: e.currentTarget.value });
         return (
             <div className="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--fixed m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
                 <div className="m-grid m-grid--hor m-grid--root m-page">
@@ -71,7 +73,7 @@ export class Login extends React.Component<LoginProps, LoginStates> {
                                     </div>
                                     <div className="m-login__form m-form">
                                         <div className="form-group m-form__group has-danger">
-                                            <input className="form-control m-input" type="text" placeholder="Email" name="email" autoComplete="off" />
+                                            <input className="form-control m-input" type="text" placeholder="Email" name="email" defaultValue={'xyuu@xyuu.net'} onChange={handleEmail} autoComplete="off" />
                                             <div id="email-error" className="form-control-feedback">{error}</div>
                                         </div>
                                         <div className="form-group m-form__group">

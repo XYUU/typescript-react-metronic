@@ -111,9 +111,9 @@ module.exports = (env, options) => {
       //     secure: false
       //   },
       // },
-      // before(app) {
-      //   Mocker(app, Path.resolve('mock/index.js'))
-      // },
+      before(app) {
+        Mocker(app, Path.resolve('mock/index.js'))
+      },
       disableHostCheck: true
     },
     optimization: {
