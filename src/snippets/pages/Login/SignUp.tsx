@@ -33,7 +33,7 @@ export const SignUp = (props) => {
                     <div className="row form-group m-form__group m-login__form-sub">
                         <div>
                             <label className="m-checkbox m-checkbox--focus">
-                                <input type="checkbox" name="agree" />I Agree the<a href="#" className="m-link m-link--focus">terms and conditions</a>.<span />
+                                <Field component="input" type="checkbox" name="agree" />I Agree the<a href="#" className="m-link m-link--focus">terms and conditions</a>.<span />
                             </label>
                             <span className="m-form__help" />
                         </div>

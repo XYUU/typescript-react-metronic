@@ -15,18 +15,12 @@ export const ForgetPassword = (props) => {
                 </div>
                 <div className="m-login__form m-form">
                     <div className="form-group m-form__group">
-                        <Field
-                            name="email"
-                            type="text"
-                            component="input"
-                            className="form-control m-input"
-                            placeholder="Email"
-                        />
+                        <Field component="input" name="email" type="text" className="form-control m-input" placeholder="Email" />
                         {error && <strong>{error}</strong>}
                     </div>
                     <div className="m-login__two-action">
                         <button type="submit" disabled={submitting} className="btn btn-focus m-btn m-btn--custom m-btn--air m-login__btn--primaryr">Request</button>
-                        <button onClick={()=>toggle('signin')} className="btn btn-outline-focus m-btn m-btn--custom">Cancel</button>
+                        <button onClick={() => toggle('signin')} className="btn btn-outline-focus m-btn m-btn--custom">Cancel</button>
                     </div>
                 </div>
             </form>
