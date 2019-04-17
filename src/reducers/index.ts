@@ -1,6 +1,7 @@
 import { combineReducers, Action } from 'redux';
 import { RootState } from '../models/RootState';
 import * as Actions from '../constants/actions';
+import { reducer as formReducer } from 'redux-form';
 
 function handleActions<StateAndPayload>(reducerMap: any, initialState: StateAndPayload) {
   return (state = initialState, action: Action): StateAndPayload => {
@@ -31,6 +32,11 @@ export default combineReducers<RootState>({
     [Actions.TOASTR_MESSAGE]: (state, action) => {
       return [].concat(...state, action.payload);
     }
-  }, [])
-
+  }, []),
+  loginView: handleActions({
+    [Actions.LOGIN_TOGGLE]: (state, action) => {
+      return action.payload;
+    }
+  }, ""),
+  form: formReducer
 });

@@ -18,3 +18,4 @@ export const signIn = createAction(Actions.SIGN_IN);
 export const signUp = createAction(Actions.SIGN_UP);
 export const forgetPassword = createAction(Actions.FORGET_PASSWORD);
 export const toastrMessage = createAction(Actions.TOASTR_MESSAGE);
+export const loginToggle = createAction(Actions.LOGIN_TOGGLE);

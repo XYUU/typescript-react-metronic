@@ -11,3 +11,4 @@ export const SIGN_IN = 'SIGN_IN';
 export const SIGN_UP = 'SIGN_UP';
 export const FORGET_PASSWORD = 'FORGET_PASSWORD';
 export const TOASTR_MESSAGE = 'TOASTR_MESSAGE';
+export const LOGIN_TOGGLE = 'LOGIN_TOGGLE';

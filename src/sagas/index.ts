@@ -29,7 +29,7 @@ function* signin(action) {
 
 function* signup(action) {
   try {
-    const user = yield call(fetch, "signup", action.payload);
+    const user = yield call(json, "signup", action.payload);
     yield put({ type: "USER_FETCH_SUCCEEDED", payload: user });
   } catch (e) {
     yield put({ type: Actions.TOASTR_MESSAGE, payload: e.message });
@@ -38,7 +38,7 @@ function* signup(action) {
 
 function* forgetPassword(action) {
   try {
-    const user = yield call(fetch, "forgetPassword", action.payload);
+    const user = yield call(json, "forgetPassword", action.payload);
     yield put({ type: "USER_FETCH_SUCCEEDED", payload: user });
   } catch (e) {
     yield put({ type: Actions.TOASTR_MESSAGE, payload: e.message });
@@ -49,6 +49,7 @@ function* saga() {
   yield takeLatest(Actions.SIGN_IN, signin);
   yield takeLatest(Actions.SIGN_UP, signup);
   yield takeLatest(Actions.FORGET_PASSWORD, forgetPassword);
+  
 }
 
 export default saga;

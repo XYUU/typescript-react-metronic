@@ -9,4 +9,5 @@ export interface RootState {
     userProfileOn: boolean
     quickSidebarOn: boolean
     message: string[]
+    loginView: string
 }
