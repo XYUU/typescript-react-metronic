@@ -1,4 +1,7 @@
-bootstrap框架引入
+# metronic皮肤的react + typescript实现
+
+## 代码笔记
+### bootstrap框架引入
 ```jsx
 import "../../../framework/vendors/bootstrap/bootstrap.scss";
 ```
@@ -9,7 +12,7 @@ import "../../../framework/vendors/bootstrap/bootstrap.scss";
 @import "../../../framework/components/general/forms/input";
 ```
 
-等分圆
+### 等分圆
 ```TS
         const { bg } = this,
             { awards } = this.props,
@@ -29,7 +32,7 @@ import "../../../framework/vendors/bootstrap/bootstrap.scss";
             temp += angle;
         }
 ```
-图表暂定
+## 图表暂定
 Recharts
 "redux-saga-ie8"
 "redux": "^3.7.2",
@@ -48,19 +51,19 @@ https://www.npmjs.com/package/perfect-scrollbar
 React-Perfect-Scrollbar
 react-scroll
 
-控制台考虑使用 xterm.js
+## 控制台考虑使用
+xterm.js
 
-侧滑
+## 侧滑
 swipe-js-iso
 不建议使用react-swipe
 
-去掉
+## 去掉
 "@types/redux-actions": "^2.3.1",
 "redux-actions": "^2.6.3",
 因为其不兼容IE8，但使用的api兼容其API接口，为今后切换过去做准备。
 
-
-polyfill
+## polyfill
 ```ts
 export const CONTENT_TYPE = "Content-Type",
     ContentType = {
@@ -93,12 +96,12 @@ fetch("user", { credentials: "include" })
     });
 ```
 
-库的负担：
-1、做前端引入库要考虑体积的大小。
+## 库的负担：
+1. 做前端引入库要考虑体积的大小。
 为了两三行代码引入一个库，不合算。
-2、还要考虑浏览器兼容性等实现。
+1. 还要考虑浏览器兼容性等实现。
 引入一个库还要修补浏览器兼容性，破坏了早期期望的一致性，带来了额外的工作量。
-3、版本控制和升级机制。
+1. 版本控制和升级机制。
 因历史问题导致的后续版本推倒重来，无法传承。
 
 Lodash和Underscore存在柯里化的问题，基于这个问题，在函数式流行的今天，其无法满足第3点是肯定的。
